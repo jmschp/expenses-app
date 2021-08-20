@@ -1,0 +1,9 @@
+.expenses {
+  width: 75%;
+  height: 500px;
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -1,0 +1,9 @@
+.expense-card__date {
+  width: 100px;
+  color: white;
+  text-align: center;
+  background-color:darkblue;
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 15px;
+}
