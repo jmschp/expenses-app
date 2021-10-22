@@ -6,8 +6,6 @@ import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
 import "./Expenses.css";
 
 function Expenses(props) {
-  // const expenses = props.expensesList;
-  // const [expenses, setExpenses] = useState(props.expensesList);
   const [filteredYear, setYear] = useState("");
 
   const filterExpenses = (filteredYear) => {
@@ -23,25 +21,27 @@ function Expenses(props) {
 
   const filterExpenseHandler = (selectedYear) => {
     setYear(selectedYear);
-    // filterExpenses(selectedYear);
   };
+
+  let expenses = <p>No expenses found</p>;
+
+  if (filterExpenses(filteredYear).length > 0) {
+    expenses = filterExpenses(filteredYear).map((expense) => {
+      return (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+      );
+    });
+  }
 
   return (
     <Card className="expenses">
-      <ExpensesFilter
-        filteredYear={filteredYear}
-        onFilterExpense={filterExpenseHandler}
-      />
-      {filterExpenses(filteredYear).map((expense) => {
-        return (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        );
-      })}
+      <ExpensesFilter filteredYear={filteredYear} onFilterExpense={filterExpenseHandler} />
+      {expenses}
     </Card>
   );
 }
