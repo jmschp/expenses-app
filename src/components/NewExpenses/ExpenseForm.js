@@ -38,6 +38,10 @@ export default function ExpenseForm(props) {
     setUserInput({ enteredTitle: "", enteredAmount: "", enteredDate: "" });
   };
 
+  const cancelHandler = () => {
+    props.hideForm();
+  };
+
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
@@ -47,18 +51,16 @@ export default function ExpenseForm(props) {
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
-          <input
-            type="number"
-            nim="0.01"
-            step="0.01"
-            onChange={amountChangeHandler}
-          />
+          <input type="number" nim="0.01" step="0.01" onChange={amountChangeHandler} />
         </div>
         <div className="new-expense__control">
           <label>Date</label>
           <input type="date" onChange={dateChangeHandler} />
         </div>
         <div className="new-expense__actions">
+          <button type="button" onClick={cancelHandler}>
+            Cancel Expense
+          </button>
           <button type="submit">Add Expense</button>
         </div>
       </div>
